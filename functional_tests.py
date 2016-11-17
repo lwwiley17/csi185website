@@ -48,33 +48,19 @@ class NewVisitorTest(unittest.TestCase):
         # Put the name of your image here in place of homebrew.png
         # In general this is how we check for images on a page.
 
+        #The user sees an image of a pathway
+
         m=self.browser.find_element_by_tag_name('img')
         self.assertIn('home.jpg',m.get_attribute('src'))
 
-        # We check here for the title of your home page.
-        # uncomment the next lines and change the text when you set your title.
-        # put your title in place of "The Title of My Home Page"
-
-        h=self.browser.find_element_by_css_selector('h1')
-        self.assertIn("Exclusive Societies",h.text)
-
-        # There is an area specified around the computer keyboard.
-        # the 'id' of this area is 'keyboard'
-
-        # this is how we find that area.
-        a=self.browser.find_element_by_id('keyboard')
-
-        # this is how we click on it.
+        # testing the image for a clickable area by the ID tag
+        a=self.browser.find_element_by_id('homepage')
         a.click()
 
-        # after clicking on it, we should see the next page.
-        e=self.browser.find_element_by_css_selector("h1")
-        self.assertIn('Keyboards',e.text)
+        self.assertIn('Lamp',self.browser.title)
 
-        # The page should have a picture of a teletype machine. 
+        h=self.browser.find_element_by_tag_name('h1')
+
         m=self.browser.find_element_by_tag_name('img')
-        self.assertIn('teletype.jpg',m.get_attribute('src'))
-    
-
 if __name__=="__main__":
         unittest.main(warnings="ignore")
